@@ -8,10 +8,6 @@ import de.keygalp.engine.input.KeyManager;
 
 
 public class Engine {
-	
-	private String name;
-	private int width;
-	private int height;
 
 	private Display display;
 	private Graphics g;
@@ -21,18 +17,10 @@ public class Engine {
 	private boolean running = false;
 	
 	public Engine(String name, int width, int height) {
-		this.name = name;
-		this.width = width;
-		this.height = height;
-
-		init();
-	}
-	
-	private void init() {
 		display = new Display(name, width, height);
-		display.getFrame().addKeyListener(new KeyManager());
+		display.getCanvas().addKeyListener(new KeyManager(this));
 	}
-	
+
 	private void tick() {
 		
 	}
@@ -44,11 +32,10 @@ public class Engine {
 			return;
 		}
 		g = bs.getDrawGraphics();
-		g.clearRect(0, 0, width, height);
-
+		g.clearRect(0, 0, Display.WIDTH, Display.HEIGHT);
 		// draw
+		
 		// end draw
-
 		g.dispose();
 		bs.show();
 	}
@@ -81,12 +68,11 @@ public class Engine {
 					}
 					
 					if(timer >= 1000000000) {
-						display.getFrame().setTitle(name+ " | FPS: "+ticks);
+						display.setTitle(Display.NAME+ " | FPS: "+ticks);
 						ticks = 0;
 						timer = 0;
 					}
 				}
-				
 				stopGame();
 				System.exit(0);
 			}
@@ -98,18 +84,10 @@ public class Engine {
 		if (!running)
 			return;
 		running = false;
-		try {
-			run.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 	
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
+	public static void main(String[] args) {
+		Engine engine = new Engine("Engine", 1280, 720);
+		engine.start();
 	}
 }
