@@ -35,7 +35,7 @@ public class Display extends JFrame{
 		add(canvas);
 		pack();
 		setVisible(true);
-		requestFocus();
+		canvas.requestFocus();
 	}
 	private void showOnScreen(int screen, int x, int y) {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
