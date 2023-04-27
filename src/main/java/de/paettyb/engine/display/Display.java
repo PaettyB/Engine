@@ -1,4 +1,4 @@
-package de.keygalp.engine.display;
+package main.java.de.paettyb.engine.display;
 
 import java.awt.*;
 

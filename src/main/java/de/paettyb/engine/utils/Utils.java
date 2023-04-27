@@ -1,4 +1,4 @@
-package de.keygalp.engine.utils;
+package main.java.de.paettyb.engine.utils;
 
 public class Utils {
 

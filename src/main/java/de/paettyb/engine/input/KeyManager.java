@@ -1,6 +1,6 @@
-package de.keygalp.engine.input;
+package main.java.de.paettyb.engine.input;
 
-import de.keygalp.engine.Engine;
+import main.java.de.paettyb.engine.Engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

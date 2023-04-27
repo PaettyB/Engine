@@ -1,7 +1,7 @@
-package de.keygalp.engine;
+package main.java.de.paettyb.engine;
 
-import de.keygalp.engine.display.Display;
-import de.keygalp.engine.input.KeyManager;
+import main.java.de.paettyb.engine.display.Display;
+import main.java.de.paettyb.engine.input.KeyManager;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -40,6 +40,7 @@ public abstract class Engine {
     
     public abstract void render(Graphics g);
     
+    @SuppressWarnings("unused")
     public synchronized void start() {
         if (running)
             return;
@@ -49,7 +50,7 @@ public abstract class Engine {
                 
                 long lastTime = System.nanoTime();
                 int fps = 60;
-                double timePerTick = 1000000000 / fps;
+                double timePerTick = 1000000000 / (double)fps;
                 double delta = 0;
                 long now;
                 long timer = 0;
