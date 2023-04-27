@@ -10,7 +10,7 @@ import java.awt.image.BufferStrategy;
 public abstract class Engine {
     
     protected Display display;
-    protected Graphics g;
+    protected Graphics2D g;
     protected BufferStrategy bs;
     
     protected Thread run;
@@ -27,7 +27,7 @@ public abstract class Engine {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
-        g = bs.getDrawGraphics();
+        g = (Graphics2D) bs.getDrawGraphics();
         g.clearRect(0, 0, Display.WIDTH, Display.HEIGHT);
         // draw
         render(g);
@@ -38,7 +38,7 @@ public abstract class Engine {
 	
 	public abstract void tick();
     
-    public abstract void render(Graphics g);
+    public abstract void render(Graphics2D g);
     
     @SuppressWarnings("unused")
     public synchronized void start() {
