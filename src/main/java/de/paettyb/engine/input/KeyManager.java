@@ -1,6 +1,6 @@
-package main.java.de.paettyb.engine.input;
+package de.paettyb.engine.input;
 
-import main.java.de.paettyb.engine.Engine;
+import de.paettyb.engine.Engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

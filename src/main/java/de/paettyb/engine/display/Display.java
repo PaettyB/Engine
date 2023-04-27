@@ -1,4 +1,4 @@
-package main.java.de.paettyb.engine.display;
+package de.paettyb.engine.display;
 
 import java.awt.*;
 

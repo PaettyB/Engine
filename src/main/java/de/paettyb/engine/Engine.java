@@ -1,7 +1,7 @@
-package main.java.de.paettyb.engine;
+package de.paettyb.engine;
 
-import main.java.de.paettyb.engine.display.Display;
-import main.java.de.paettyb.engine.input.KeyManager;
+import de.paettyb.engine.display.Display;
+import de.paettyb.engine.input.KeyManager;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
