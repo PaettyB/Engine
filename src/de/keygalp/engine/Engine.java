@@ -9,12 +9,12 @@ import java.awt.image.BufferStrategy;
 
 public abstract class Engine {
     
-    private Display display;
-    private Graphics g;
-    private BufferStrategy bs;
+    protected Display display;
+    protected Graphics g;
+    protected BufferStrategy bs;
     
-    private Thread run;
-    private boolean running = false;
+    protected Thread run;
+    protected boolean running = false;
     
     public Engine(String name, int width, int height) {
         display = new Display(name, width, height);
