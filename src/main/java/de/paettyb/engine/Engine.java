@@ -41,8 +41,8 @@ public abstract class Engine {
         g.dispose();
         bs.show();
     }
-	
-	public abstract void tick();
+    
+    public abstract void tick();
     
     public abstract void render(Graphics g);
     
@@ -56,7 +56,7 @@ public abstract class Engine {
                 
                 long lastTime = System.nanoTime();
                 int fps = 60;
-                double timePerTick = 1000000000 / (double)fps;
+                double timePerTick = 1000000000 / (double) fps;
                 double delta = 0;
                 long now;
                 long timer = 0;

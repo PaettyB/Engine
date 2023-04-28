@@ -1,13 +1,10 @@
 package de.paettyb.engine.input;
 
-import de.paettyb.engine.Engine;
-import de.paettyb.engine.utils.Vec2f;
 import de.paettyb.engine.utils.Vec2i;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.Vector;
 
 public class MouseManager implements MouseListener, MouseMotionListener {
     
