@@ -20,15 +20,19 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public MouseManager() {
     }
     
-    public void update(){
+    public void update() {
         movement.x = mouseX - prevX;
         movement.y = mouseY - prevY;
         prevX = mouseX;
         prevY = mouseY;
     }
     
-    public static Vec2i getMovement(){
+    public static Vec2i getMovement() {
         return movement;
+    }
+    
+    public static boolean isDragging() {
+        return dragging;
     }
     
     @Override
