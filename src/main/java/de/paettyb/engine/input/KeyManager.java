@@ -7,10 +7,10 @@ import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
     
-    public static boolean[] keys = new boolean[1024];
-    public static boolean[] cooldowns = new boolean[65536];
+    private static final boolean[] keys = new boolean[1024];
+    private static final boolean[] cooldowns = new boolean[1024];
     
-    Engine engine;
+    private final Engine engine;
     
     public KeyManager(Engine engine){
     	this.engine = engine;

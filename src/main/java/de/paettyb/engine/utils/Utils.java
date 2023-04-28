@@ -1,4 +1,4 @@
-package main.java.de.paettyb.engine.utils;
+package de.paettyb.engine.utils;
 
 public class Utils {
 
