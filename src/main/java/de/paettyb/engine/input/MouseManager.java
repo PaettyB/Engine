@@ -8,8 +8,9 @@ import java.awt.event.MouseMotionListener;
 
 public class MouseManager implements MouseListener, MouseMotionListener {
     
-    private static final boolean[] keys = new boolean[32];
-    private static final boolean[] cooldowns = new boolean[32];
+    private static final boolean[] keys = new boolean[5];
+    private static final boolean[] keysPressed = new boolean[5];
+    private static final boolean[] cooldowns = new boolean[5];
     
     private static boolean dragging = false;
     
@@ -25,7 +26,11 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         movement.y = mouseY - prevY;
         prevX = mouseX;
         prevY = mouseY;
+        for (int i = 0; i < keys.length; i++){
+            keysPressed[i] = updateKeyPressed(i);
+        }
     }
+    
     
     public static Vec2i getMovement() {
         return movement;
@@ -33,6 +38,14 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     
     public static boolean isDragging() {
         return dragging;
+    }
+    
+    public static void setDragging(boolean dragging) {
+        MouseManager.dragging = dragging;
+    }
+    
+    public static boolean keyWasPressed(int  keyCode) {
+        return keysPressed[keyCode];
     }
     
     @Override
@@ -54,7 +67,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         return keys[keyCode];
     }
     
-    public static boolean keyWasPressed(int keyCode) {
+    private boolean updateKeyPressed(int keyCode) {
         if (keys[keyCode]) {
             if (!cooldowns[keyCode]) {
                 cooldowns[keyCode] = true;

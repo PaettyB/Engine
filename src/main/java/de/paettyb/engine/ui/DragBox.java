@@ -11,6 +11,8 @@ public class DragBox {
     protected Color color = Color.pink;
     protected boolean dragged = false;
     protected int borderWidth = 1;
+    protected boolean fixedToMouse = false;
+    private boolean alive = false;  // Used to ignore the first KeyPressed Event
     
     public DragBox(int x, int y, int width, int height) {
         this.x = x;
@@ -32,9 +34,13 @@ public class DragBox {
     }
     
     public void update() {
-        if (MouseManager.isDragging()) {
-            if (dragged || mouseIntersect()) {
-                dragged = true;
+        if(!alive) alive = true;
+        else if(MouseManager.keyWasPressed(1)) {
+            fixedToMouse = false;
+        }
+        if (MouseManager.isDragging() || fixedToMouse) {
+            if(fixedToMouse || mouseIntersect()) dragged = true;
+            if (dragged) {
                 x = x + MouseManager.getMovement().x;
                 y = y + MouseManager.getMovement().y;
             }
