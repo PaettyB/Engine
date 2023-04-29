@@ -39,7 +39,7 @@ public class CanvasButton {
     }
     
     public boolean update() {
-        if (MouseManager.keyWasPressed(1)) {
+        if (MouseManager.keyWasClicked(1)) {
             if (MouseManager.mouseX >= x && MouseManager.mouseX <= x + width
                     && MouseManager.mouseY >= y && MouseManager.mouseY <= y + height) {
                 try {

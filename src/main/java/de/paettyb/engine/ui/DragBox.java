@@ -1,5 +1,6 @@
 package de.paettyb.engine.ui;
 
+import de.paettyb.engine.Engine;
 import de.paettyb.engine.input.MouseManager;
 
 import java.awt.*;
@@ -13,12 +14,34 @@ public class DragBox {
     protected int borderWidth = 1;
     protected boolean fixedToMouse = false;
     private boolean alive = false;  // Used to ignore the first KeyPressed Event
+    private boolean disableEvents = false;
+    
+    protected Runnable action = () -> {};
+    
+    int c = 0;
     
     public DragBox(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+    }
+    public DragBox(int x, int y, int width, int height, boolean fixedToMouse, Runnable action) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.fixedToMouse = fixedToMouse;
+        this.action = action;
+    }
+    
+    public DragBox(int x, int y, int width, int height, Color color, boolean fixedToMouse, Runnable action) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.fixedToMouse = fixedToMouse;
+        this.action = action;
     }
     
     public void render(Graphics g) {
@@ -34,9 +57,14 @@ public class DragBox {
     }
     
     public void update() {
+        disableEvents = false;
         if(!alive) alive = true;
-        else if(MouseManager.keyWasPressed(1)) {
+        else if(MouseManager.keyWasReleased(1) && fixedToMouse) {
             fixedToMouse = false;
+            disableEvents = true;
+        }
+        if(MouseManager.keyWasClicked(1) && !disableEvents && !fixedToMouse && mouseIntersect()){
+            action.run();
         }
         if (MouseManager.isDragging() || fixedToMouse) {
             if(fixedToMouse || mouseIntersect()) dragged = true;
@@ -95,5 +123,21 @@ public class DragBox {
     
     public void setBorderWidth(int borderWidth) {
         this.borderWidth = borderWidth;
+    }
+    
+    public boolean isAlive() {
+        return alive;
+    }
+    
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    
+    public Runnable getAction() {
+        return action;
+    }
+    
+    public void setAction(Runnable action) {
+        this.action = action;
     }
 }

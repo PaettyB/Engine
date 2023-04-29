@@ -18,6 +18,7 @@ public abstract class Engine {
     
     protected Thread run;
     protected boolean running = false;
+    protected static long frame = 0;
     
     public Engine(String name, int width, int height) {
         display = new Display(name, width, height);
@@ -71,8 +72,11 @@ public abstract class Engine {
                         mouseManager.update();
                         tick();
                         renderSetup();
+                        mouseManager.cleanup();
                         ticks++;
                         delta--;
+                        
+                        frame++;
                     }
                     
                     if (timer >= 1000000000) {
@@ -92,6 +96,10 @@ public abstract class Engine {
         if (!running)
             return;
         running = false;
+    }
+    
+    public static long getFrame() {
+        return frame;
     }
     
 }
