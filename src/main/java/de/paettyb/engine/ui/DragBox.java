@@ -16,6 +16,9 @@ public class DragBox {
     private boolean alive = false;  // Used to ignore the first KeyPressed Event
     private boolean disableEvents = false;
     
+    private boolean highligted = false;
+    private Color highlightColor = Color.GREEN;
+    
     protected Runnable action = () -> {};
     
     int c = 0;
@@ -45,6 +48,10 @@ public class DragBox {
     }
     
     public void render(Graphics g) {
+        if(highligted) {
+            g.setColor(highlightColor);
+            g.fillRect(x - 1, y - 1, width + 2, height + 2);
+        }
         g.setColor(Color.BLACK);
         g.fillRect(x, y, width, height);
         g.setColor(color);
@@ -139,5 +146,21 @@ public class DragBox {
     
     public void setAction(Runnable action) {
         this.action = action;
+    }
+    
+    public boolean isHighligted() {
+        return highligted;
+    }
+    
+    public void setHighligted(boolean highligted) {
+        this.highligted = highligted;
+    }
+    
+    public Color getHighlightColor() {
+        return highlightColor;
+    }
+    
+    public void setHighlightColor(Color highlightColor) {
+        this.highlightColor = highlightColor;
     }
 }
