@@ -51,7 +51,7 @@ public class DragBox {
         g.fillRect(x + borderWidth, y + borderWidth, width - 2 * borderWidth, height - 2 * borderWidth);
     }
     
-    protected boolean mouseIntersect() {
+    public boolean mouseIntersect() {
         return (MouseManager.mouseX >= x && MouseManager.mouseX <= x + width
                 && MouseManager.mouseY >= y && MouseManager.mouseY <= y + height);
     }

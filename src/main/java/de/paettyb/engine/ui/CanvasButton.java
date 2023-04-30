@@ -38,10 +38,14 @@ public class CanvasButton {
         g.drawString(label, x + padding, y + labelHeight + padding);
     }
     
+    public boolean mouseIntersect() {
+        return (MouseManager.mouseX >= x && MouseManager.mouseX <= x + width
+                && MouseManager.mouseY >= y && MouseManager.mouseY <= y + height);
+    }
+    
     public boolean update() {
         if (MouseManager.keyWasClicked(1)) {
-            if (MouseManager.mouseX >= x && MouseManager.mouseX <= x + width
-                    && MouseManager.mouseY >= y && MouseManager.mouseY <= y + height) {
+            if (mouseIntersect()) {
                 try {
                     callback.run();
                     return true;
