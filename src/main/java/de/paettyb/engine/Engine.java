@@ -102,4 +102,15 @@ public abstract class Engine {
         return frame;
     }
     
+    public Display getDisplay() {
+        return display;
+    }
+    
+    public Graphics getG() {
+        return g;
+    }
+    
+    public boolean isRunning() {
+        return running;
+    }
 }
